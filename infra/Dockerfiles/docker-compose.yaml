@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  webserver:
+    image: apache/airflow:2.10.0
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${DB_USER}:${DB_PASSWORD}@db/${DB_NAME}
+      AIRFLOW__CORE__FERNET_KEY: ${FERNET_KEY}
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    command: >
+      bash -c "airflow db init && airflow users create --username admin --password admin12345 --firstname Admin --lastname User --role Admin --email brendo.filipe2050a@outlook.com && airflow webserver"
+
+  scheduler:
+    image: apache/airflow:2.10.0
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${DB_USER}:${DB_PASSWORD}@db/${DB_NAME}
+      AIRFLOW__CORE__FERNET_KEY: ${FERNET_KEY}
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    depends_on:
+      - db
+    command:
+      - scheduler
+
+volumes:
+  postgres-data:

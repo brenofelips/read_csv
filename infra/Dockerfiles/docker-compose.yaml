@@ -22,7 +22,7 @@ services:
     depends_on:
       - db
     command: >
-      bash -c "airflow db init && airflow users create --username admin --password admin12345 --firstname Admin --lastname User --role Admin --email brendo.filipe2050a@outlook.com && airflow webserver"
+      bash -c "airflow db init && airflow users create --username ${AIRFLOW_USER} --password ${AIRFLOW_PASSWORD} --firstname ${AIRFLOW_FIRSTNAME} --lastname ${AIRFLOW_LASTNAME} --role Admin --email ${AIRFLOW_EMAIL} && airflow webserver"
 
   scheduler:
     image: apache/airflow:2.10.0

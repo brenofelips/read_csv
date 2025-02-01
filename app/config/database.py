@@ -1,6 +1,5 @@
-import pyscopg2
+import psycopg2
 from dotenv import load_dotenv
-
 from environment import (
     get_db_host,
     get_db_name,

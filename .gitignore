@@ -1,3 +1,4 @@
 .read_csv_env
 __pycache__/
 infra/envs/.env
+.idea

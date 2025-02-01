@@ -48,3 +48,4 @@ services:
     command: server /data
 volumes:
   postgres-data:
+  minio-data:

@@ -1,6 +1,6 @@
 import psycopg2
 from dotenv import load_dotenv
-from environment import (
+from app.config.environment import (
     get_db_host,
     get_db_name,
     get_db_user,

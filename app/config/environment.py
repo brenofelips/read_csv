@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def get_db_host() -> str:
     return os.environ.get('DB_HOST')

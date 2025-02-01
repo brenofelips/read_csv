@@ -7,7 +7,7 @@ def save_to_db(df):
         for index, row in df.iterrows():
             cursor.execute(
                 """
-                INSERT INTO sua_tabela (
+                INSERT INTO person (
                     data, qual_o_seu_nome, qual_o_seu_numero, 
                     podemos_confirmar_sua_presenca, mulheres, homens, presente
                 ) VALUES (%s, %s, %s, %s, %s, %s, %s)

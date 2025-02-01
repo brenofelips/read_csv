@@ -14,3 +14,9 @@ def get_db_user() -> str:
 
 def get_db_password() -> str:
     return os.environ.get('DB_PASSWORD')
+
+def get_minio_root_user() -> str:
+    return os.environ.get('MINIO_ROOT_USER')
+
+def get_minio_root_password() -> str:
+    return os.environ.get('MINIO_ROOT_PASSWORD')

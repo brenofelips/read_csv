@@ -2,7 +2,7 @@ apache-airflow==2.10.0
 pandas==2.1.1
 psycopg2-binary==2.9.9
 flask==2.2.1
-fastapi==0.9.0
+fastapi==0.109.1
 uvicorn==0.22.0
 python-dotenv==1.0.1
 minio==7.1.17

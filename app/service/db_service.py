@@ -1,5 +1,6 @@
 from app.config.database import get_connection
 
+
 def save_to_db(df):
     try:
         connection = get_connection()

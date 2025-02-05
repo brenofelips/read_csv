@@ -7,6 +7,7 @@ from app.config.environment import (
     get_db_password
 )
 
+
 def get_connection() -> psycopg2.extensions.connection:
     load_dotenv()
     return psycopg2.connect(

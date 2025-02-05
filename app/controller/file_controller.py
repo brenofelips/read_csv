@@ -5,6 +5,7 @@ from app.service.db_service import save_to_db
 
 router = APIRouter()
 
+
 @router.post("/upload/")
 def upload_to__minio(bucket_name: str, file_path: str, object_name: str):
     try:
@@ -13,6 +14,7 @@ def upload_to__minio(bucket_name: str, file_path: str, object_name: str):
     except HTTPException as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @router.post("/download/")
 def download_from_minio(bucket_name: str, file_path: str, object_name: str):
     try:
@@ -20,6 +22,7 @@ def download_from_minio(bucket_name: str, file_path: str, object_name: str):
         return {"message": f"Arquivo {object_name} baixado para {file_path}."}
     except HTTPException as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @router.post("/process/")
 def process_csv(bucket_name, object_name, download_path):

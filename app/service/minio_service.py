@@ -5,11 +5,12 @@ from app.config.environment import (
 )
 
 minio_client = Minio(
-"localhost:9000",
+    "localhost:9000",
     access_key=get_minio_root_user(),
     secret_key=get_minio_root_password(),
     secure=False
 )
+
 
 def upload_file(bucket_name, file_path, object_name):
     try:
@@ -21,9 +22,10 @@ def upload_file(bucket_name, file_path, object_name):
     except Exception as e:
         print(f"Erro ao subir o arquivo: -> {e}")
 
+
 def download_file(bucket_name, object_name, file_path):
-   try:
-       minio_client.fget_object(bucket_name, object_name, file_path)
-       print(f"Arquivo {object_name} baixado para {file_path}.")
-   except Exception as e:
-       print(f"Erro ao baixar o arquivo: -> {e}")
+    try:
+        minio_client.fget_object(bucket_name, object_name, file_path)
+        print(f"Arquivo {object_name} baixado para {file_path}.")
+    except Exception as e:
+        print(f"Erro ao baixar o arquivo: -> {e}")
